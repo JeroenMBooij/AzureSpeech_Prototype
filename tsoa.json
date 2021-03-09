@@ -1,0 +1,42 @@
+{
+    "entryFile": "src/app.ts",
+    "noImplicitAdditionalProperties": "throw-on-extras",
+    "controllerPathGlobs": [
+      "src/**/*.controller.ts"
+    ],
+    "spec": {
+      "basePath" : "/",
+      "description": "<b>This API facilitates testing cognitive recognition services</b> <br><br> <b>&#169; Jeroen Booij</b>",
+      "outputDirectory": "dist/api/public",
+      "specVersion": 3,
+      "specMerging": "recursive",
+      "spec":{
+        "paths": {
+          "/speech-to-text": {
+            "post": {
+              "description": "<b>Upload an audio file as a mono recording formatted to a wav file with 16kHz</b>",
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "multipart/form-data": {
+                    "schema": {
+                      "type":"object",
+                      "properties":{
+                        "voiceCommand":{
+                          "type": "string",
+                          "format": "binary"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "routes": {
+      "routesDir": "src/api"
+    }
+  }
